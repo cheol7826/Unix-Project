@@ -47,8 +47,10 @@ int main(void){
 			}
 			removeList(pointer);
 		}
-		else if(strcmp(dirname, "/.") == 0)
-			continue;
+		else if(strcmp(dirname, "/.") == 0){
+			if(choice != 1)
+				continue;
+		}
 		else
 			addList(pointer, dirname);
 
@@ -57,7 +59,15 @@ int main(void){
 		char yorn;
 
 		switch(choice){
+			case -1:
+				dirflag = 0;
+				break;
 			case 1:
+				fileInfo(targetdir);
+				if(strcmp(dirname, "/.") == 0){
+					break;
+				}
+				dirflag = 0;
 				break;
 			case 2:
 				if(dirflag == 0){

@@ -3,16 +3,19 @@
 int copyflag = 0;
 
 void printStartMenu(){
+	printf("-----------------------------------------");
 	printf("-----------------------------------------\n");
 	printf("\t파일/디렉토리 관리 시스템\n");
+	printf("-----------------------------------------");
 	printf("-----------------------------------------\n");
 }
 
 int printMainMenu(char * dirname){
 	int choice;
+	printf("-----------------------------------------");
 	printf("-----------------------------------------\n");
 	printf("1. 파일 / 디렉토리 상세정보\n");
-	printf("2. 파일 실행 / 디렉토리 이동\n");
+	printf("2. 파일 실행(실행파일만 가능) / 디렉토리 이동\n");
 	printf("3. 파일 편집 ( vi로 이동 )\n");
 	printf("4. 파일 / 디렉토리 삭제\n");
 	printf("5. 파일 / 디렉토리 복사\n");
@@ -21,12 +24,15 @@ int printMainMenu(char * dirname){
 	printf("6. 파일 / 디렉토리 붙여넣기\n");
 	printf("\x1b[0m");
 	printf("7. 시스템 종료\n");
+	printf("-----------------------------------------");
 	printf("-----------------------------------------\n");
 	printf("현재 디렉토리 : %s\n", dirname);
 	while(1){
+		printf("-----------------------------------------");
 		printf("-----------------------------------------\n");
 		printf("번호 선택 >> ");
 		scanf(" %d", &choice);
+		while(getchar() != '\n');
 	
 		if(choice > 0 && choice <= 7){
 			if(!copyflag && choice == 6){
@@ -40,16 +46,19 @@ int printMainMenu(char * dirname){
 }
 
 int printDirMenu(int max){
-	int choice;
+	int choice = 0;
 
 	while(1){
 		printf("파일/디렉토리 번호 선택 >> ");
 		scanf(" %d", &choice);
+		while(getchar() != '\n');
+
 		if(choice > 0 && choice <= max)
 			return choice;
 
 		printf("번호 선택 오류 : 번호를 다시 선택하세요\n");
 	}
+	printf("-----------------------------------------");
 	printf("-----------------------------------------\n");
 	
 }
