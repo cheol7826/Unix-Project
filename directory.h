@@ -6,8 +6,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include <fcntl.h>
 
 
 void fileInfo(char *filename);
 int dirManager(char *name, char* choicedir);
-int dirflag;
+int prevflag;
