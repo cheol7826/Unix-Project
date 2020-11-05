@@ -173,6 +173,116 @@ void permcheck(char perm[][4], mode_t mode){
 }
 
 
+// 선택한 파일을 vi로 연다
+void openfile(char * filename){
+	char command[MAX_LENGTH];
+
+	// 파일을 선택한 경우
+	if(prevflag == 1){
+		strcpy(command, "vi ");
+		strcat(command, filename);
+		system(command);
+	} 
+	// 디렉토리를 선택한 경우
+	else{
+		printf("디렉토리는 편집할 수 없습니다\n");
+		prevflag = 1;
+	}
+}
+
+// 선택한 파일을 삭제한다
+void deletefile(char *filename){
+	char choice;
+	char command[MAX_LENGTH];
+
+	// 삭제여부를 한번 더 물은 뒤 지운다
+	printf("정말 %s 을 삭제하시겠습니까? (y | n) >> ", filename);
+	scanf(" %c", &choice);
+	if(choice == 'y'){
+		strcpy(command, "rm -rf ");
+		strcat(command, filename);
+		system(command);
+		printf("%s 파일 삭제 완료\n", filename);
+	} else{
+		printf("삭제 취소합니다\n");
+	}
+
+	// case에서 리스트를 하나 지우기 때문에 위에서 지울 필요가 없으므로 바꿈
+	if(prevflag == 1)
+		prevflag = 0;
+}
+
+// 파일 복사 및 붙여넣기
+void copypastefile(char *src, char *dst){
+	char command[MAX_LENGTH];
+
+	strcpy(command, "cp -r ");
+	strcat(command, src);
+	strcat(command, " ");
+	strcat(command, dst);
+	system(command);		// command 명렁어를 만든 뒤 system으로 수행한다
+	copyflag = 0;
+	prevflag = 0;
+	printf("파일 붙여넣기 완료\n");
+}
+
+
+// 파일 생성
+void createfile(char *dirname){
+	char create[MAX_LENGTH];
+	char filename[MAX_LENGTH];
+	int fd;
+	
+	prevflag = 0;
+
+	// 생성할 파일 명을 입력받은 뒤
+	printf("생성할 파일 명 입력 >> ");
+	scanf(" %s", filename);
+	while(getchar() != '\n');
+
+	// 현재 위치의 절대경로와 파일명을 합쳐서 파일 이름을 생성한다
+	strcpy(create, dirname);
+	strcat(create, "/");
+	strcat(create, filename);
+
+	// 파일 생성 부분
+	fd = open(create, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if(fd == -1){
+		printf("파일 생성 실패\n");
+		return;
+	}
+
+	close(fd);
+	printf("파일 생성 완료\n");
+}
+
+
+// 디렉토리 생성
+void createdir(char * dirname){
+	char create[MAX_LENGTH];
+	char filename[MAX_LENGTH];
+	int dfd;
+
+	prevflag = 0;
+
+	// 파일 생성과 마찬가지로 이름을 입력받고
+	printf("생성할 디렉토리 명 입력 >> ");
+	scanf(" %s", filename);
+	while(getchar() != '\n');
+
+	// 디렉토리 이름을 절대경로로 만든 뒤
+	strcpy(create, dirname);
+	strcat(create, "/");
+	strcat(create, filename);
+
+	// 디렉토리를 생성한다
+	dfd = mkdir(create, 0755);
+	if(dfd == -1){
+		printf("디렉토리 생성 실패\n");
+		return;
+	}
+	printf("디렉토리 생성 완료\n");
+}
 
 
 
