@@ -61,27 +61,35 @@
  ![image](https://user-images.githubusercontent.com/60842206/130899153-50a97896-6923-401b-a085-0506028179f1.png)
 
 
-
-
-
 - 클라이언트 접속 완료 시 서버 측 화면  
- 
 
+![image](https://user-images.githubusercontent.com/60842206/131338052-15f6ca8e-cfeb-474e-92f8-4ec45632aa4d.png)
+
+ 
 ③ Client Information 화면 동작
 - 기본 화면 출력
+
+![image](https://user-images.githubusercontent.com/60842206/131338080-ac9f2e16-1fba-4d91-a49e-7052c704f25a.png)
+
  
 - Process 버튼 클릭 시
+
+![image](https://user-images.githubusercontent.com/60842206/131338099-eaf69694-8343-4eec-9679-ea8affbf5f51.png)
+
  
 - System Info 버튼 클릭 시
+
+![image](https://user-images.githubusercontent.com/60842206/131338114-3a3b4a36-8279-41cc-bafb-3951bbe2b6dc.png)
+
  
 - Disk Info 버튼 클릭 시
+
+![image](https://user-images.githubusercontent.com/60842206/131338141-95f0086a-12f1-430c-80e2-2df411430297.png)
+
  
 - 클라이언트가 종료된 경우 / 연결되지 않은 경우
+
+![image](https://user-images.githubusercontent.com/60842206/131338160-e4d0f352-ded9-440b-b377-fcb60fa633b3.png)
+
  
 - 클라이언트 측 시스템 종료 ( Ctrl + C 를 이용함 )
- 
-
-④ 다중 클라이언트 접속 시
- 
-
-
